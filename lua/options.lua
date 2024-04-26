@@ -1,4 +1,4 @@
-vim.g.have_nerd_font = true 
+vim.g.have_nerd_font = true
 
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
@@ -99,7 +99,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end
 })
 
-vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]
+-- vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]
 
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode

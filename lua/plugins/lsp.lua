@@ -14,6 +14,15 @@ return {
       local lspconfig = require("lspconfig")
       lspconfig.clangd.setup({})
       lspconfig.flow.setup({})
+      lspconfig.eslint.setup({
+        --- ...
+        on_attach = function(client, bufnr)
+          vim.api.nvim_create_autocmd("BufWritePre", {
+            buffer = bufnr,
+            command = "EslintFixAll",
+          })
+        end,
+      })
       lspconfig.lua_ls.setup({
         -- cmd = {...},
         -- filetypes = { ...},
@@ -43,7 +52,7 @@ return {
     opts = {},
     config = function()
       require("typescript-tools").setup {
-        filetypes = {"typescript", "html", "typescriptreact", "typescript.tsx"},
+        filetypes = { "typescript", "html", "typescriptreact", "typescript.tsx" },
         settings = {
           -- spawn additional tsserver instance to calculate diagnostics on it
           separate_diagnostic_server = true,
