@@ -109,7 +109,10 @@ return {
 		-- config = true,
 		config = function()
 			local neogit = require("neogit")
-			neogit.setup({})
+			neogit.setup({
+				disable_hint = true,
+				kind = "vsplit",
+			})
 			vim.keymap.set("n", "<C-g>", function()
 				neogit.open({ cwd = "%:p:h" })
 			end)
