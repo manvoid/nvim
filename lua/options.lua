@@ -80,6 +80,12 @@ vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right win
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
+vim.keymap.set({ "i" }, "<M-BS>", "<Esc>bdwi")
+vim.keymap.set({ "i" }, "<M-Left>", "<Esc>bi")
+vim.keymap.set({ "i" }, "<M-Right>", "<Right><Esc>ea")
+vim.keymap.set({ "n" }, "<M-BS>", "bdw")
+vim.keymap.set({ "i", "n" }, "<D-s>", "<cmd>w<cr>", { desc = "Save file" })
+
 vim.api.nvim_create_autocmd("LspAttach", {
 	desc = "LSP actions",
 	callback = function(event)

@@ -27,27 +27,44 @@ return {
 			vim.cmd.colorscheme("kanagawa-wave")
 		end,
 	},
+	-- {
+	-- 	"nvim-neo-tree/neo-tree.nvim",
+	-- 	version = "*",
+	-- 	dependencies = {
+	-- 		"nvim-lua/plenary.nvim",
+	-- 		"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
+	-- 		"MunifTanjim/nui.nvim",
+	-- 	},
+	-- 	cmd = "Neotree",
+	-- 	keys = {
+	-- 		{ "\\", ":Neotree reveal<CR>", { desc = "NeoTree reveal" } },
+	-- 	},
+	-- 	opts = {
+	-- 		filesystem = {
+	-- 			window = {
+	-- 				mappings = {
+	-- 					["\\"] = "close_window",
+	-- 				},
+	-- 			},
+	-- 		},
+	-- 	},
+	-- },
 	{
-		"nvim-neo-tree/neo-tree.nvim",
-		version = "*",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-			"MunifTanjim/nui.nvim",
-		},
-		cmd = "Neotree",
-		keys = {
-			{ "\\", ":Neotree reveal<CR>", { desc = "NeoTree reveal" } },
-		},
-		opts = {
-			filesystem = {
-				window = {
-					mappings = {
-						["\\"] = "close_window",
-					},
+		"stevearc/oil.nvim",
+		opts = {},
+		-- Optional dependencies
+		dependencies = { "nvim-tree/nvim-web-devicons" },
+		config = function()
+			require("oil").setup({
+				delete_to_trash = true,
+				skip_confirm_for_simple_edits = true,
+				keymaps = {
+					["<C-h>"] = false,
 				},
-			},
-		},
+			})
+
+			vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+		end,
 	},
 	-- {
 	-- 	"nvim-lualine/lualine.nvim",
@@ -70,10 +87,6 @@ return {
 			end
 		end,
 		opts = function()
-			-- PERF: we don't need this lualine require madness 🤷
-			local lualine_require = require("lualine_require")
-			lualine_require.require = require
-
 			vim.o.laststatus = vim.g.lualine_laststatus
 
 			return {
@@ -82,19 +95,14 @@ return {
 					globalstatus = true,
 					disabled_filetypes = { statusline = { "dashboard", "alpha", "starter" } },
 				},
-				sections = {
-					lualine_a = { "mode" },
-					lualine_b = { "branch" },
-					lualine_y = {
-						{ "progress", separator = " ", padding = { left = 1, right = 0 } },
-						{ "location", padding = { left = 0, right = 1 } },
-					},
-					lualine_z = {
-						function()
-							return " " .. os.date("%R")
-						end,
-					},
-				},
+				-- sections = {
+				-- 	lualine_a = { "mode" },
+				-- 	lualine_b = { "branch" },
+				-- 	lualine_y = {
+				-- 		{ "progress", separator = " ", padding = { left = 1, right = 0 } },
+				-- 		{ "location", padding = { left = 0, right = 1 } },
+				-- 	},
+				-- },
 				extensions = { "neo-tree", "lazy" },
 			}
 		end,
