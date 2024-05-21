@@ -75,16 +75,37 @@ vim.keymap.set("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<cr>")
 --  Use CTRL+<hjkl> to switch between windows
 --
 --  See `:help wincmd` for a list of all window commands
-vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
-vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
-vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
-vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
+-- vim.keymap.set({ "n" }, "<D-n>", "<C-w><C-h>", { desc = "Move focus to the left window" })
+-- vim.keymap.set({ "n" }, "<D-i>", "<C-w><C-l>", { desc = "Move focus to the right window" })
+-- vim.keymap.set({ "n" }, "<D-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
+-- vim.keymap.set({ "n" }, "<D-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
+vim.keymap.set({ "n" }, "<C-M-S-D-n>", "<C-w><C-h>", { desc = "Move focus to the left window" })
+vim.keymap.set({ "n" }, "<C-M-S-D-i>", "<C-w><C-l>", { desc = "Move focus to the right window" })
+vim.keymap.set({ "n" }, "<C-M-S-D-e>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
+vim.keymap.set({ "n" }, "<C-M-S-D-u>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
+vim.keymap.set({ "i" }, "<C-M-S-D-n>", "<Esc><C-w>ha", { desc = "Move focus to the left window" })
+vim.keymap.set({ "i" }, "<C-M-S-D-i>", "<Esc><C-w>la", { desc = "Move focus to the right window" })
+vim.keymap.set({ "i" }, "<C-M-S-D-e>", "<Esc><C-w>ja", { desc = "Move focus to the lower window" })
+vim.keymap.set({ "i" }, "<C-M-S-D-u>", "<Esc><C-w>ka", { desc = "Move focus to the upper window" })
+vim.keymap.set({ "t" }, "<C-M-S-D-n>", "<C-\\><C-n><C-w>ha", { desc = "Move focus to the left window" })
+vim.keymap.set({ "t" }, "<C-M-S-D-i>", "<C-\\><C-n><C-w>la", { desc = "Move focus to the right window" })
+vim.keymap.set({ "t" }, "<C-M-S-D-e>", "<C-\\><C-n><C-w>ja", { desc = "Move focus to the lower window" })
+vim.keymap.set({ "t" }, "<C-M-S-D-u>", "<C-\\><C-n><C-w>ka", { desc = "Move focus to the upper window" })
+-- Tabs movement
+vim.keymap.set({ "n" }, "<C-M-S-D-y>", "<cmd>tabnext<cr>", { desc = "Move to next tab" })
+vim.keymap.set({ "n" }, "<C-M-S-D-l>", "<cmd>tabprevious<cr>", { desc = "Move to previous tab" })
+vim.keymap.set({ "i" }, "<C-M-S-D-y>", "<Esc><cmd>tabnext<cr>", { desc = "Move focus to the left window" })
+vim.keymap.set({ "i" }, "<C-M-S-D-l>", "<Esc><cmd>tabprevious<cr>", { desc = "Move focus to the right window" })
+vim.keymap.set({ "t" }, "<C-M-S-D-y>", "<C-\\><C-n><cmd>tabnext<cr>", { desc = "Move focus to the left window" })
+vim.keymap.set({ "t" }, "<C-M-S-D-l>", "<C-\\><C-n><cmd>tabprevious<cr>", { desc = "Move focus to the right window" })
 
 vim.keymap.set({ "i" }, "<M-BS>", "<Esc>bdwi")
 vim.keymap.set({ "i" }, "<M-Left>", "<Esc>bi")
 vim.keymap.set({ "i" }, "<M-Right>", "<Right><Esc>ea")
 vim.keymap.set({ "n" }, "<M-BS>", "bdw")
 vim.keymap.set({ "i", "n" }, "<D-s>", "<cmd>w<cr>", { desc = "Save file" })
+
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
 
 vim.api.nvim_create_autocmd("LspAttach", {
 	desc = "LSP actions",

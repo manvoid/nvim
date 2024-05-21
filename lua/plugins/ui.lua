@@ -27,28 +27,6 @@ return {
 			vim.cmd.colorscheme("kanagawa-wave")
 		end,
 	},
-	-- {
-	-- 	"nvim-neo-tree/neo-tree.nvim",
-	-- 	version = "*",
-	-- 	dependencies = {
-	-- 		"nvim-lua/plenary.nvim",
-	-- 		"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-	-- 		"MunifTanjim/nui.nvim",
-	-- 	},
-	-- 	cmd = "Neotree",
-	-- 	keys = {
-	-- 		{ "\\", ":Neotree reveal<CR>", { desc = "NeoTree reveal" } },
-	-- 	},
-	-- 	opts = {
-	-- 		filesystem = {
-	-- 			window = {
-	-- 				mappings = {
-	-- 					["\\"] = "close_window",
-	-- 				},
-	-- 			},
-	-- 		},
-	-- 	},
-	-- },
 	{
 		"stevearc/oil.nvim",
 		opts = {},
@@ -66,13 +44,6 @@ return {
 			vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
 		end,
 	},
-	-- {
-	-- 	"nvim-lualine/lualine.nvim",
-	-- 	dependencies = { "nvim-tree/nvim-web-devicons" },
-	-- 	config = function()
-	-- 		require("lualine").setup({})
-	-- 	end,
-	-- },
 	{
 		"nvim-lualine/lualine.nvim",
 		event = "VeryLazy",
@@ -107,4 +78,5 @@ return {
 			}
 		end,
 	},
+	{ "nvim-telescope/telescope-ui-select.nvim" },
 }
