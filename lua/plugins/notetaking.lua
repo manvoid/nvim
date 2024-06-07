@@ -19,7 +19,7 @@ return {
 			})
 
 			vim.wo.foldlevel = 99
-			vim.wo.conceallevel = 2
+			vim.wo.conceallevel = 1
 		end, -- put any other flags you wanted to pass to lazy here!
 	},
 }
