@@ -98,6 +98,9 @@ return {
 			vim.keymap.set({ "n", "t" }, "<M-Space>", builtin.buffers, { desc = "[ ] Find existing buffers" })
 			vim.keymap.set({ "n", "t" }, "<C-Space>", builtin.buffers, { desc = "[ ] Find existing buffers" })
 
+			vim.keymap.set("n", "<C-p>.", builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
+			vim.keymap.set("n", "<leader><leader>", builtin.buffers, { desc = "[ ] Find existing buffers" })
+
 			vim.keymap.set(
 				"n",
 				"<leader>fg",

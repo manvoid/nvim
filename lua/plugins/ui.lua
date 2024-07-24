@@ -1,25 +1,24 @@
 return {
-	{ -- Useful plugin to show you pending keybinds.
+	{
 		"folke/which-key.nvim",
-		event = "VimEnter", -- Sets the loading event to 'VimEnter'
-		config = function() -- This is the function that runs, AFTER loading
-			require("which-key").setup()
-
-			-- Document existing key chains
-			require("which-key").register({
-				["<leader>c"] = { name = "[C]ode", _ = "which_key_ignore" },
-				["<leader>d"] = { name = "[D]ocument", _ = "which_key_ignore" },
-				["<leader>r"] = { name = "[R]ename", _ = "which_key_ignore" },
-				["<leader>s"] = { name = "[S]earch", _ = "which_key_ignore" },
-				["<leader>w"] = { name = "[W]orkspace", _ = "which_key_ignore" },
-				["<leader>t"] = { name = "[T]oggle", _ = "which_key_ignore" },
-				["<leader>h"] = { name = "Git [H]unk", _ = "which_key_ignore" },
-			})
-			-- visual mode
-			require("which-key").register({
-				["<leader>h"] = { "Git [H]unk" },
-			}, { mode = "v" })
-		end,
+		event = "VeryLazy",
+		opts = {
+			-- your configuration comes here
+			-- or leave it empty to use the default settings
+			-- refer to the configuration section below
+			icons = {
+				mappings = false,
+			},
+		},
+		keys = {
+			{
+				"<leader>?",
+				function()
+					require("which-key").show({ global = false })
+				end,
+				desc = "Buffer Local Keymaps (which-key)",
+			},
+		},
 	},
 	{
 		"rebelot/kanagawa.nvim",
@@ -79,4 +78,21 @@ return {
 		end,
 	},
 	{ "nvim-telescope/telescope-ui-select.nvim" },
+	{
+		"echasnovski/mini.icons",
+		version = false,
+		config = function()
+			require("mini.icons").setup()
+		end,
+	},
+	{
+		"kessejones/term.nvim",
+		config = function()
+			require("term").setup()
+			vim.keymap.set({ "t" }, "<C-t>", require("term").new, { silent = true })
+			vim.keymap.set({ "n", "t" }, "<C-\\>", require("term").toggle, { silent = true })
+			vim.keymap.set({ "t" }, "<C-n>", require("term").next, { silent = true })
+			vim.keymap.set({ "t" }, "<C-p>", require("term").prev, { silent = true })
+		end,
+	},
 }

@@ -112,4 +112,27 @@ return {
 			{ "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
 		},
 	},
+	-- {
+	-- 	"kylechui/nvim-surround",
+	-- 	version = "*", -- Use for stability; omit to use `main` branch for the latest features
+	-- 	event = "VeryLazy",
+	-- 	config = function()
+	-- 		require("nvim-surround").setup({
+	-- 			-- Configuration here, or leave empty to use defaults
+	-- 			keymaps = {
+	-- 				insert = "<C-g>r",
+	-- 				insert_line = "<C-g>R",
+	-- 				normal = "yr",
+	-- 				normal_cur = "yrr",
+	-- 				normal_line = "yR",
+	-- 				normal_cur_line = "yRR",
+	-- 				visual = "R",
+	-- 				visual_line = "gR",
+	-- 				delete = "dr",
+	-- 				change = "cr",
+	-- 				change_line = "cR",
+	-- 			},
+	-- 		})
+	-- 	end,
+	-- },
 }
