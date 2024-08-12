@@ -113,8 +113,19 @@ return {
 				disable_hint = true,
 				-- kind = "vsplit",
 			})
+			-- vim.keymap.set("n", "<C-g>", "<CMD>Neogit<CR>", { desc = "Open neogit" })
+			-- vim.keymap.set("n", "<C-G>", "<CMD>Neogit cwd=%:p:h<CR>", { desc = "Open neogit" })
+			-- vim.keymap.set("n", "<C-g>", function()
+			-- neogit.open()
+			-- neogit.open({ cwd = "%:p:h" })
+			-- end)
+			-- vim.keymap.set("n", "<C-G>", function()
+			-- 	neogit.open({ cwd = "%:p:h" })
+			-- end)
+
 			vim.keymap.set("n", "<C-g>", function()
-				neogit.open({ cwd = "%:p:h" })
+				-- neogit.open({ cwd = "%:p:h", kind = "replace" })
+				neogit.open({ kind = "replace" })
 			end)
 		end,
 	},

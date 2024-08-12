@@ -51,6 +51,9 @@ vim.opt.cursorline = true
 vim.opt.hlsearch = true
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
+vim.wo.foldlevel = 99
+vim.wo.conceallevel = 1
+
 -- vim.lsp.set_log_level 'debug'
 vim.cmd([[autocmd BufEnter *.tsx lua vim.opt.tabstop = 2]])
 vim.cmd([[autocmd BufEnter *.tsx lua vim.opt.shiftwidth = 2]])
@@ -105,7 +108,7 @@ vim.keymap.set({ "i" }, "<M-Right>", "<Right><Esc>ea")
 vim.keymap.set({ "n" }, "<M-BS>", "bdw")
 vim.keymap.set({ "i", "n" }, "<D-s>", "<cmd>w<cr>", { desc = "Save file" })
 
-vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
+vim.keymap.set("t", "<M-Esc>", "<C-\\><C-n>")
 
 vim.api.nvim_create_autocmd("LspAttach", {
 	desc = "LSP actions",

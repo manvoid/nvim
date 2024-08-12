@@ -29,6 +29,10 @@ return {
 				auto_install = true,
 				highlight = {
 					enable = true,
+					disable = function(lang, bufnr) --
+						-- Extend this to other languages by adding `lang == "x"` where x is the language
+						return vim.api.nvim_buf_line_count(bufnr) > 20000 and (lang == "thrift" or lang == "c")
+					end,
 				},
 				indent = {
 					enable = true,
